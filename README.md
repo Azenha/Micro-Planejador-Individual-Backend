@@ -1,4 +1,16 @@
-# Adonis fullstack application
+# Micro Planejador Individual Backend
+
+Uma ferramenta de planejamento de compras para MEIs
+
+## Original
+
+[Micro Planejador Individual](https://github.com/Azenha/Micro-Planejador-Individual)
+
+## Frontend
+
+[Micro Planejador Individual Frontend](https://github.com/Azenha/Micro-Planejador-Individual-Frontend)
+
+## Adonis fullstack application
 
 This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
 
@@ -11,7 +23,7 @@ This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
 7. Lucid ORM
 8. Migrations and seeds
 
-## Setup
+### Setup
 
 Use the adonis command to install the blueprint
 
@@ -22,7 +34,7 @@ adonis new yardstick
 or manually clone the repo and then run `npm install`.
 
 
-### Migrations
+#### Migrations
 
 Run the following command to run startup migrations.
 

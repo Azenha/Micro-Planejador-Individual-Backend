@@ -1,36 +1,30 @@
 'use strict'
 
-/*
-|--------------------------------------------------------------------------
-| Routes
-|--------------------------------------------------------------------------
-|
-| Http routes are entry points to your web application. You can create
-| routes for different URL's and bind Controller actions to them.
-|
-| A complete guide on routing is available here.
-| http://adonisjs.com/docs/4.1/routing
-|
-*/
-
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
-'use strict'
-
 const Route = use('Route')
 
 Route.on('/').render('welcome')
 
+// User registration
 Route.post('/api/v1/users', 'UserController.store')
+
+// User login
 Route.post('/api/v1/auth/login', 'AuthController.login')
 
+// Authenticated routes
 Route.group(() => {
+  // Get the current authenticated user
+  Route.get('auth/user', 'AuthController.getUser')
+
   // Route.get('users', 'UserController.index')
   // Route.get('users/:id', 'UserController.show')
   // Route.post('users', 'UserController.store')
   // Route.put('users/:id', 'UserController.update')
   // Route.delete('users/:id', 'UserController.destroy')
-  Route.resource('lists', 'ListController').apiOnly().middleware('auth')
-  Route.resource('lists.items', 'ItemController').apiOnly().middleware('auth')
-}).prefix('api/v1') // Optional: prefix your routes
+
+  // Lists and items routes
+  Route.resource('lists', 'ListController').apiOnly()
+  Route.resource('lists.items', 'ItemController').apiOnly()
+}).prefix('api/v1').middleware(['auth'])
 
 module.exports = Route
